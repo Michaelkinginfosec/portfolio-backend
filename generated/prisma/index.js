@@ -148,6 +148,10 @@ const config = {
         "fromEnvVar": null,
         "value": "darwin",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "debian-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -165,16 +169,17 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://michaelking_owner:npg_wVYh8vnLSX0H@ep-flat-scene-a5omqut2-pooler.us-east-2.aws.neon.tech/michaelking?sslmode=require"
+        "value": null
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id           String   @id @default(uuid())\n  email        String   @unique\n  password     String\n  refreshToken String?\n  createdAt    DateTime @default(now())\n}\n\nmodel Project {\n  id        String   @id @default(uuid()) @db.Uuid\n  image     String?\n  title     String   @unique\n  subTitle  String   @unique\n  createdAt DateTime @default(now())\n}\n",
-  "inlineSchemaHash": "d2588f4974c7d2086889db6b97c971da213fda38079ef67b7004a3829e644972",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../generated/prisma\"\n  binaryTargets = [\"native\", \"debian-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id           String   @id @default(uuid())\n  email        String   @unique\n  password     String\n  refreshToken String?\n  createdAt    DateTime @default(now())\n}\n\nmodel Project {\n  id        String   @id @default(uuid()) @db.Uuid\n  image     String?\n  title     String   @unique\n  subTitle  String   @unique\n  createdAt DateTime @default(now())\n}\n",
+  "inlineSchemaHash": "5aa2319f7adcf3af12b19915bd21953410fd42638b48b5527eaa041199e35165",
   "copyEngine": true
 }
 
@@ -215,6 +220,10 @@ Object.assign(exports, Prisma)
 // file annotations for bundling tools to include these files
 path.join(__dirname, "libquery_engine-darwin.dylib.node");
 path.join(process.cwd(), "generated/prisma/libquery_engine-darwin.dylib.node")
+
+// file annotations for bundling tools to include these files
+path.join(__dirname, "libquery_engine-debian-openssl-3.0.x.so.node");
+path.join(process.cwd(), "generated/prisma/libquery_engine-debian-openssl-3.0.x.so.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "generated/prisma/schema.prisma")
