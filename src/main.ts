@@ -11,8 +11,8 @@ async function bootstrap() {
 
 
 const config = new DocumentBuilder()
-  .setTitle('Portfolio')
-  .setDescription('My portfolio API')
+  .setTitle('MICHAELKING')
+  .setDescription('This API powers my personal portfolio website. You can view the projects I have worked on, along with links to the live versions of these projects.')
   .setVersion('1.0')
   .addBearerAuth(
     {

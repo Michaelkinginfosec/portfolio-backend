@@ -4,6 +4,9 @@ import { PrismaModule } from './common/database/prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 import { ContactModule } from './contact/contact.module';
 import { ConfigModule } from '@nestjs/config/dist';
+import { PingModule } from './ping/ping.module';
+import { ScheduleModule } from '@nestjs/schedule';
+
 
 
 @Module({
@@ -11,8 +14,9 @@ import { ConfigModule } from '@nestjs/config/dist';
     ConfigModule.forRoot({
     isGlobal: true,
   }),
+    PingModule,ScheduleModule.forRoot()
    ],
-  controllers: [],
+  
   providers: [],
 })
 export class AppModule {}
