@@ -128,6 +128,10 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.ProjectScalarFieldEnum = {
   id: 'id',
   image: 'image',
+  iosLink: 'iosLink',
+  androidLink: 'androidLink',
+  webLink: 'webLink',
+  githubLink: 'githubLink',
   title: 'title',
   subTitle: 'subTitle',
   createdAt: 'createdAt'

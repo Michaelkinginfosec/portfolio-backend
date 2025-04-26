@@ -1968,6 +1968,10 @@ export namespace Prisma {
   export type ProjectMinAggregateOutputType = {
     id: string | null
     image: string | null
+    iosLink: string | null
+    androidLink: string | null
+    webLink: string | null
+    githubLink: string | null
     title: string | null
     subTitle: string | null
     createdAt: Date | null
@@ -1976,6 +1980,10 @@ export namespace Prisma {
   export type ProjectMaxAggregateOutputType = {
     id: string | null
     image: string | null
+    iosLink: string | null
+    androidLink: string | null
+    webLink: string | null
+    githubLink: string | null
     title: string | null
     subTitle: string | null
     createdAt: Date | null
@@ -1984,6 +1992,10 @@ export namespace Prisma {
   export type ProjectCountAggregateOutputType = {
     id: number
     image: number
+    iosLink: number
+    androidLink: number
+    webLink: number
+    githubLink: number
     title: number
     subTitle: number
     createdAt: number
@@ -1994,6 +2006,10 @@ export namespace Prisma {
   export type ProjectMinAggregateInputType = {
     id?: true
     image?: true
+    iosLink?: true
+    androidLink?: true
+    webLink?: true
+    githubLink?: true
     title?: true
     subTitle?: true
     createdAt?: true
@@ -2002,6 +2018,10 @@ export namespace Prisma {
   export type ProjectMaxAggregateInputType = {
     id?: true
     image?: true
+    iosLink?: true
+    androidLink?: true
+    webLink?: true
+    githubLink?: true
     title?: true
     subTitle?: true
     createdAt?: true
@@ -2010,6 +2030,10 @@ export namespace Prisma {
   export type ProjectCountAggregateInputType = {
     id?: true
     image?: true
+    iosLink?: true
+    androidLink?: true
+    webLink?: true
+    githubLink?: true
     title?: true
     subTitle?: true
     createdAt?: true
@@ -2091,6 +2115,10 @@ export namespace Prisma {
   export type ProjectGroupByOutputType = {
     id: string
     image: string | null
+    iosLink: string | null
+    androidLink: string | null
+    webLink: string | null
+    githubLink: string | null
     title: string
     subTitle: string
     createdAt: Date
@@ -2116,6 +2144,10 @@ export namespace Prisma {
   export type ProjectSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     image?: boolean
+    iosLink?: boolean
+    androidLink?: boolean
+    webLink?: boolean
+    githubLink?: boolean
     title?: boolean
     subTitle?: boolean
     createdAt?: boolean
@@ -2124,6 +2156,10 @@ export namespace Prisma {
   export type ProjectSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     image?: boolean
+    iosLink?: boolean
+    androidLink?: boolean
+    webLink?: boolean
+    githubLink?: boolean
     title?: boolean
     subTitle?: boolean
     createdAt?: boolean
@@ -2132,6 +2168,10 @@ export namespace Prisma {
   export type ProjectSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     image?: boolean
+    iosLink?: boolean
+    androidLink?: boolean
+    webLink?: boolean
+    githubLink?: boolean
     title?: boolean
     subTitle?: boolean
     createdAt?: boolean
@@ -2140,12 +2180,16 @@ export namespace Prisma {
   export type ProjectSelectScalar = {
     id?: boolean
     image?: boolean
+    iosLink?: boolean
+    androidLink?: boolean
+    webLink?: boolean
+    githubLink?: boolean
     title?: boolean
     subTitle?: boolean
     createdAt?: boolean
   }
 
-  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "image" | "title" | "subTitle" | "createdAt", ExtArgs["result"]["project"]>
+  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "image" | "iosLink" | "androidLink" | "webLink" | "githubLink" | "title" | "subTitle" | "createdAt", ExtArgs["result"]["project"]>
 
   export type $ProjectPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Project"
@@ -2153,6 +2197,10 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       image: string | null
+      iosLink: string | null
+      androidLink: string | null
+      webLink: string | null
+      githubLink: string | null
       title: string
       subTitle: string
       createdAt: Date
@@ -2581,6 +2629,10 @@ export namespace Prisma {
   interface ProjectFieldRefs {
     readonly id: FieldRef<"Project", 'String'>
     readonly image: FieldRef<"Project", 'String'>
+    readonly iosLink: FieldRef<"Project", 'String'>
+    readonly androidLink: FieldRef<"Project", 'String'>
+    readonly webLink: FieldRef<"Project", 'String'>
+    readonly githubLink: FieldRef<"Project", 'String'>
     readonly title: FieldRef<"Project", 'String'>
     readonly subTitle: FieldRef<"Project", 'String'>
     readonly createdAt: FieldRef<"Project", 'DateTime'>
@@ -2978,6 +3030,10 @@ export namespace Prisma {
   export const ProjectScalarFieldEnum: {
     id: 'id',
     image: 'image',
+    iosLink: 'iosLink',
+    androidLink: 'androidLink',
+    webLink: 'webLink',
+    githubLink: 'githubLink',
     title: 'title',
     subTitle: 'subTitle',
     createdAt: 'createdAt'
@@ -3118,6 +3174,10 @@ export namespace Prisma {
     NOT?: ProjectWhereInput | ProjectWhereInput[]
     id?: UuidFilter<"Project"> | string
     image?: StringNullableFilter<"Project"> | string | null
+    iosLink?: StringNullableFilter<"Project"> | string | null
+    androidLink?: StringNullableFilter<"Project"> | string | null
+    webLink?: StringNullableFilter<"Project"> | string | null
+    githubLink?: StringNullableFilter<"Project"> | string | null
     title?: StringFilter<"Project"> | string
     subTitle?: StringFilter<"Project"> | string
     createdAt?: DateTimeFilter<"Project"> | Date | string
@@ -3126,6 +3186,10 @@ export namespace Prisma {
   export type ProjectOrderByWithRelationInput = {
     id?: SortOrder
     image?: SortOrderInput | SortOrder
+    iosLink?: SortOrderInput | SortOrder
+    androidLink?: SortOrderInput | SortOrder
+    webLink?: SortOrderInput | SortOrder
+    githubLink?: SortOrderInput | SortOrder
     title?: SortOrder
     subTitle?: SortOrder
     createdAt?: SortOrder
@@ -3139,12 +3203,20 @@ export namespace Prisma {
     OR?: ProjectWhereInput[]
     NOT?: ProjectWhereInput | ProjectWhereInput[]
     image?: StringNullableFilter<"Project"> | string | null
+    iosLink?: StringNullableFilter<"Project"> | string | null
+    androidLink?: StringNullableFilter<"Project"> | string | null
+    webLink?: StringNullableFilter<"Project"> | string | null
+    githubLink?: StringNullableFilter<"Project"> | string | null
     createdAt?: DateTimeFilter<"Project"> | Date | string
   }, "id" | "title" | "subTitle">
 
   export type ProjectOrderByWithAggregationInput = {
     id?: SortOrder
     image?: SortOrderInput | SortOrder
+    iosLink?: SortOrderInput | SortOrder
+    androidLink?: SortOrderInput | SortOrder
+    webLink?: SortOrderInput | SortOrder
+    githubLink?: SortOrderInput | SortOrder
     title?: SortOrder
     subTitle?: SortOrder
     createdAt?: SortOrder
@@ -3159,6 +3231,10 @@ export namespace Prisma {
     NOT?: ProjectScalarWhereWithAggregatesInput | ProjectScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Project"> | string
     image?: StringNullableWithAggregatesFilter<"Project"> | string | null
+    iosLink?: StringNullableWithAggregatesFilter<"Project"> | string | null
+    androidLink?: StringNullableWithAggregatesFilter<"Project"> | string | null
+    webLink?: StringNullableWithAggregatesFilter<"Project"> | string | null
+    githubLink?: StringNullableWithAggregatesFilter<"Project"> | string | null
     title?: StringWithAggregatesFilter<"Project"> | string
     subTitle?: StringWithAggregatesFilter<"Project"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Project"> | Date | string
@@ -3223,6 +3299,10 @@ export namespace Prisma {
   export type ProjectCreateInput = {
     id?: string
     image?: string | null
+    iosLink?: string | null
+    androidLink?: string | null
+    webLink?: string | null
+    githubLink?: string | null
     title: string
     subTitle: string
     createdAt?: Date | string
@@ -3231,6 +3311,10 @@ export namespace Prisma {
   export type ProjectUncheckedCreateInput = {
     id?: string
     image?: string | null
+    iosLink?: string | null
+    androidLink?: string | null
+    webLink?: string | null
+    githubLink?: string | null
     title: string
     subTitle: string
     createdAt?: Date | string
@@ -3239,6 +3323,10 @@ export namespace Prisma {
   export type ProjectUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    iosLink?: NullableStringFieldUpdateOperationsInput | string | null
+    androidLink?: NullableStringFieldUpdateOperationsInput | string | null
+    webLink?: NullableStringFieldUpdateOperationsInput | string | null
+    githubLink?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     subTitle?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3247,6 +3335,10 @@ export namespace Prisma {
   export type ProjectUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    iosLink?: NullableStringFieldUpdateOperationsInput | string | null
+    androidLink?: NullableStringFieldUpdateOperationsInput | string | null
+    webLink?: NullableStringFieldUpdateOperationsInput | string | null
+    githubLink?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     subTitle?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3255,6 +3347,10 @@ export namespace Prisma {
   export type ProjectCreateManyInput = {
     id?: string
     image?: string | null
+    iosLink?: string | null
+    androidLink?: string | null
+    webLink?: string | null
+    githubLink?: string | null
     title: string
     subTitle: string
     createdAt?: Date | string
@@ -3263,6 +3359,10 @@ export namespace Prisma {
   export type ProjectUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    iosLink?: NullableStringFieldUpdateOperationsInput | string | null
+    androidLink?: NullableStringFieldUpdateOperationsInput | string | null
+    webLink?: NullableStringFieldUpdateOperationsInput | string | null
+    githubLink?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     subTitle?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3271,6 +3371,10 @@ export namespace Prisma {
   export type ProjectUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    iosLink?: NullableStringFieldUpdateOperationsInput | string | null
+    androidLink?: NullableStringFieldUpdateOperationsInput | string | null
+    webLink?: NullableStringFieldUpdateOperationsInput | string | null
+    githubLink?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     subTitle?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -3411,6 +3515,10 @@ export namespace Prisma {
   export type ProjectCountOrderByAggregateInput = {
     id?: SortOrder
     image?: SortOrder
+    iosLink?: SortOrder
+    androidLink?: SortOrder
+    webLink?: SortOrder
+    githubLink?: SortOrder
     title?: SortOrder
     subTitle?: SortOrder
     createdAt?: SortOrder
@@ -3419,6 +3527,10 @@ export namespace Prisma {
   export type ProjectMaxOrderByAggregateInput = {
     id?: SortOrder
     image?: SortOrder
+    iosLink?: SortOrder
+    androidLink?: SortOrder
+    webLink?: SortOrder
+    githubLink?: SortOrder
     title?: SortOrder
     subTitle?: SortOrder
     createdAt?: SortOrder
@@ -3427,6 +3539,10 @@ export namespace Prisma {
   export type ProjectMinOrderByAggregateInput = {
     id?: SortOrder
     image?: SortOrder
+    iosLink?: SortOrder
+    androidLink?: SortOrder
+    webLink?: SortOrder
+    githubLink?: SortOrder
     title?: SortOrder
     subTitle?: SortOrder
     createdAt?: SortOrder

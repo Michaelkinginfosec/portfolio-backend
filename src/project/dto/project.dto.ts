@@ -8,6 +8,28 @@ export class CreateProjectDto {
     image?: string;
 
     @IsString()
+    @IsOptional()
+    @ApiProperty()
+    androidLink?: string;
+
+
+    @IsString()
+    @IsOptional()
+    @ApiProperty()
+    iosLink?: string;
+
+    @IsString()
+    @IsOptional()
+    @ApiProperty()
+    webLink?: string;
+
+    @IsString()
+    @IsOptional()
+    @ApiProperty()
+    githubLink?: string;
+    
+
+    @IsString()
     @IsNotEmpty()
     @ApiProperty()
     title: string;

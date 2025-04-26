@@ -24,9 +24,13 @@ model User {
 }
 
 model Project {
-  id        String   @id @default(uuid()) @db.Uuid
-  image     String?
-  title     String   @unique
-  subTitle  String   @unique
-  createdAt DateTime @default(now())
+  id          String   @id @default(uuid()) @db.Uuid
+  image       String?
+  iosLink     String?
+  androidLink String?
+  webLink     String?
+  githubLink  String?
+  title       String   @unique
+  subTitle    String   @unique
+  createdAt   DateTime @default(now())
 }
