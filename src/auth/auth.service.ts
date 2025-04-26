@@ -17,7 +17,7 @@ export class AuthService {
   //   const existing = await this.prisma.user.findUnique({ where: { email: dto.email } });
   //   if (existing) throw new BadRequestException('User already exists');
 
-  //   const hashedPassword = await bcrypt.hash(dto.password, 10);
+  //   const hashedPassword = await bcrypt.hash(dto.password, 16);
 
   //   const user = await this.prisma.user.create({
   //     data: {
@@ -25,8 +25,8 @@ export class AuthService {
   //       password: hashedPassword,
   //     },
   //   });
-
-  //   return { message: 'User created successfully', user };
+  //   const {password,  ...userWithoutPassword} = user
+  //   return { message: 'User created successfully', user: userWithoutPassword };
   // }
 
   async login(dto: LoginDto) {
