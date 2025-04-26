@@ -9,11 +9,11 @@ import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags, ApiUnauthorizedRespo
 @Controller('project')
 export class ProjectController {
   constructor(private readonly projectService: ProjectService) {}
-  @UseGuards(JwtAuthGuard)
   @ApiOperation({summary: "Add a project"})
   @ApiResponse({ status: 201, description: 'project has been successfully created.', type: CreateProjectDto })
   @ApiResponse({ status: 400, description: 'Bad Request.' })
   @ApiResponse({ status: 500, description: 'Internal Server Error.' })
+  @UseGuards(JwtAuthGuard)
   @Post()
   async addProject (@Body() createProjectDto: CreateProjectDto ){
     try{

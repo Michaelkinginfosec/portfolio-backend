@@ -1,10 +1,10 @@
-import { Controller, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { SignupDto } from './dtos/signup.dto';
 import { LoginDto } from './dtos/login.dto';
 import { RefreshTokenDto } from './dtos/refresh.token.dto';
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/common/guards/jwt.guard';
+import { Response } from 'express';
 
 
 @ApiTags('auth')
@@ -12,19 +12,33 @@ import { JwtAuthGuard } from 'src/common/guards/jwt.guard';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
- //to be deleted
-  // @Post('signup')
-  // signup(@Body() dto: SignupDto) {
-  //   return this.authService.signup(dto);
-  // }
+ 
+  
+  
+  
+  
 
-  @Post('login')
+ 
   @ApiOperation({summary: "Login"})
   @ApiResponse({ status: 201, description: 'Login Success', type: LoginDto })
   @ApiResponse({ status: 401, description: 'Unauthorized.' })
   @ApiResponse({ status: 500, description: 'Internal Server Error.' })
-  login(@Body() dto: LoginDto) {
-    return this.authService.login(dto);
+  @Post('login')
+  async login(@Body() dto: LoginDto, @Res({ passthrough: true }) res: Response) {
+    const loginResult = await this.authService.login(dto);
+
+    res.cookie('access_token', loginResult.accessToken, {
+      httpOnly: true,  
+      secure: false,   
+      sameSite: 'lax', 
+      maxAge: 24 * 60 * 60 * 1000, 
+    });
+
+    
+    return {
+      message: "Login successful",
+      user: loginResult.user,
+    };
   }
 
   
