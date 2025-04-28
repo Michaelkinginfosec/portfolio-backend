@@ -38,8 +38,7 @@ export class ProjectController {
   }
   
   @Get()
-  @UseGuards(JwtAuthGuard) 
-  @ApiOperation({summary: "Get all Projects"})
+   @ApiOperation({summary: "Get all Projects"})
   @ApiResponse({ status: 200, type: CreateProjectDto})
   @ApiResponse({ status: 401, description: 'Unauthorized.' })
   @ApiResponse({ status: 500, description: 'Internal Server Error.' })
