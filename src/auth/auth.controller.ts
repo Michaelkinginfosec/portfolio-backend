@@ -39,6 +39,7 @@ export class AuthController {
     
     return {
       message: "Login successful",
+      token: loginResult.accessToken
       
     };
   }

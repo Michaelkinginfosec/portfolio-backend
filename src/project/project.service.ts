@@ -16,7 +16,9 @@ export class ProjectService {
         if(existingTitle || existingSubTitle){
             throw new BadRequestException("Project already added");
         }
-        return await this.prisma.project.create({data});
+        const project =  await this.prisma.project.create({data});
+
+        if(!project) throw new BadRequestException("Error creating user ")
     }
 
 
