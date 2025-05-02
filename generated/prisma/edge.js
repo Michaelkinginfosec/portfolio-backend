@@ -183,7 +183,7 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://michaelking:12345@localhost:5431/portfolio?schema=public"
+        "value": "postgres://koyeb-adm:npg_tZS54jouDwIs@ep-empty-silence-a259vygr.eu-central-1.pg.koyeb.app/koyebdb?sslmode=require&pgbouncer=true&connect_timeout=10"
       }
     }
   },
