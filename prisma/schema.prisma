@@ -24,13 +24,19 @@ model User {
 }
 
 model Project {
-  id          String   @id @default(uuid()) @db.Uuid
+  id          String      @id @default(uuid()) @db.Uuid
+  type        ProjectType
   image       String?
   iosLink     String?
   androidLink String?
   webLink     String?
   githubLink  String?
-  title       String   @unique
-  subTitle    String   @unique
-  createdAt   DateTime @default(now())
+  title       String      @unique
+  subTitle    String      @unique
+  createdAt   DateTime    @default(now())
+}
+
+enum ProjectType {
+  WORK
+  HOBBY
 }

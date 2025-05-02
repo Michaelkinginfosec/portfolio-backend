@@ -25,6 +25,23 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 export type Project = $Result.DefaultSelection<Prisma.$ProjectPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const ProjectType: {
+  WORK: 'WORK',
+  HOBBY: 'HOBBY'
+};
+
+export type ProjectType = (typeof ProjectType)[keyof typeof ProjectType]
+
+}
+
+export type ProjectType = $Enums.ProjectType
+
+export const ProjectType: typeof $Enums.ProjectType
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -226,8 +243,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.6.0
-   * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
+   * Prisma Client JS version: 6.7.0
+   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
    */
   export type PrismaVersion = {
     client: string
@@ -1967,6 +1984,7 @@ export namespace Prisma {
 
   export type ProjectMinAggregateOutputType = {
     id: string | null
+    type: $Enums.ProjectType | null
     image: string | null
     iosLink: string | null
     androidLink: string | null
@@ -1979,6 +1997,7 @@ export namespace Prisma {
 
   export type ProjectMaxAggregateOutputType = {
     id: string | null
+    type: $Enums.ProjectType | null
     image: string | null
     iosLink: string | null
     androidLink: string | null
@@ -1991,6 +2010,7 @@ export namespace Prisma {
 
   export type ProjectCountAggregateOutputType = {
     id: number
+    type: number
     image: number
     iosLink: number
     androidLink: number
@@ -2005,6 +2025,7 @@ export namespace Prisma {
 
   export type ProjectMinAggregateInputType = {
     id?: true
+    type?: true
     image?: true
     iosLink?: true
     androidLink?: true
@@ -2017,6 +2038,7 @@ export namespace Prisma {
 
   export type ProjectMaxAggregateInputType = {
     id?: true
+    type?: true
     image?: true
     iosLink?: true
     androidLink?: true
@@ -2029,6 +2051,7 @@ export namespace Prisma {
 
   export type ProjectCountAggregateInputType = {
     id?: true
+    type?: true
     image?: true
     iosLink?: true
     androidLink?: true
@@ -2114,6 +2137,7 @@ export namespace Prisma {
 
   export type ProjectGroupByOutputType = {
     id: string
+    type: $Enums.ProjectType
     image: string | null
     iosLink: string | null
     androidLink: string | null
@@ -2143,6 +2167,7 @@ export namespace Prisma {
 
   export type ProjectSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    type?: boolean
     image?: boolean
     iosLink?: boolean
     androidLink?: boolean
@@ -2155,6 +2180,7 @@ export namespace Prisma {
 
   export type ProjectSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    type?: boolean
     image?: boolean
     iosLink?: boolean
     androidLink?: boolean
@@ -2167,6 +2193,7 @@ export namespace Prisma {
 
   export type ProjectSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    type?: boolean
     image?: boolean
     iosLink?: boolean
     androidLink?: boolean
@@ -2179,6 +2206,7 @@ export namespace Prisma {
 
   export type ProjectSelectScalar = {
     id?: boolean
+    type?: boolean
     image?: boolean
     iosLink?: boolean
     androidLink?: boolean
@@ -2189,13 +2217,14 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "image" | "iosLink" | "androidLink" | "webLink" | "githubLink" | "title" | "subTitle" | "createdAt", ExtArgs["result"]["project"]>
+  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "image" | "iosLink" | "androidLink" | "webLink" | "githubLink" | "title" | "subTitle" | "createdAt", ExtArgs["result"]["project"]>
 
   export type $ProjectPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Project"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      type: $Enums.ProjectType
       image: string | null
       iosLink: string | null
       androidLink: string | null
@@ -2628,6 +2657,7 @@ export namespace Prisma {
    */
   interface ProjectFieldRefs {
     readonly id: FieldRef<"Project", 'String'>
+    readonly type: FieldRef<"Project", 'ProjectType'>
     readonly image: FieldRef<"Project", 'String'>
     readonly iosLink: FieldRef<"Project", 'String'>
     readonly androidLink: FieldRef<"Project", 'String'>
@@ -3029,6 +3059,7 @@ export namespace Prisma {
 
   export const ProjectScalarFieldEnum: {
     id: 'id',
+    type: 'type',
     image: 'image',
     iosLink: 'iosLink',
     androidLink: 'androidLink',
@@ -3096,6 +3127,20 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'ProjectType'
+   */
+  export type EnumProjectTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProjectType'>
+    
+
+
+  /**
+   * Reference to a field of type 'ProjectType[]'
+   */
+  export type ListEnumProjectTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProjectType[]'>
     
 
 
@@ -3173,6 +3218,7 @@ export namespace Prisma {
     OR?: ProjectWhereInput[]
     NOT?: ProjectWhereInput | ProjectWhereInput[]
     id?: UuidFilter<"Project"> | string
+    type?: EnumProjectTypeFilter<"Project"> | $Enums.ProjectType
     image?: StringNullableFilter<"Project"> | string | null
     iosLink?: StringNullableFilter<"Project"> | string | null
     androidLink?: StringNullableFilter<"Project"> | string | null
@@ -3185,6 +3231,7 @@ export namespace Prisma {
 
   export type ProjectOrderByWithRelationInput = {
     id?: SortOrder
+    type?: SortOrder
     image?: SortOrderInput | SortOrder
     iosLink?: SortOrderInput | SortOrder
     androidLink?: SortOrderInput | SortOrder
@@ -3202,6 +3249,7 @@ export namespace Prisma {
     AND?: ProjectWhereInput | ProjectWhereInput[]
     OR?: ProjectWhereInput[]
     NOT?: ProjectWhereInput | ProjectWhereInput[]
+    type?: EnumProjectTypeFilter<"Project"> | $Enums.ProjectType
     image?: StringNullableFilter<"Project"> | string | null
     iosLink?: StringNullableFilter<"Project"> | string | null
     androidLink?: StringNullableFilter<"Project"> | string | null
@@ -3212,6 +3260,7 @@ export namespace Prisma {
 
   export type ProjectOrderByWithAggregationInput = {
     id?: SortOrder
+    type?: SortOrder
     image?: SortOrderInput | SortOrder
     iosLink?: SortOrderInput | SortOrder
     androidLink?: SortOrderInput | SortOrder
@@ -3230,6 +3279,7 @@ export namespace Prisma {
     OR?: ProjectScalarWhereWithAggregatesInput[]
     NOT?: ProjectScalarWhereWithAggregatesInput | ProjectScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Project"> | string
+    type?: EnumProjectTypeWithAggregatesFilter<"Project"> | $Enums.ProjectType
     image?: StringNullableWithAggregatesFilter<"Project"> | string | null
     iosLink?: StringNullableWithAggregatesFilter<"Project"> | string | null
     androidLink?: StringNullableWithAggregatesFilter<"Project"> | string | null
@@ -3298,6 +3348,7 @@ export namespace Prisma {
 
   export type ProjectCreateInput = {
     id?: string
+    type: $Enums.ProjectType
     image?: string | null
     iosLink?: string | null
     androidLink?: string | null
@@ -3310,6 +3361,7 @@ export namespace Prisma {
 
   export type ProjectUncheckedCreateInput = {
     id?: string
+    type: $Enums.ProjectType
     image?: string | null
     iosLink?: string | null
     androidLink?: string | null
@@ -3322,6 +3374,7 @@ export namespace Prisma {
 
   export type ProjectUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: EnumProjectTypeFieldUpdateOperationsInput | $Enums.ProjectType
     image?: NullableStringFieldUpdateOperationsInput | string | null
     iosLink?: NullableStringFieldUpdateOperationsInput | string | null
     androidLink?: NullableStringFieldUpdateOperationsInput | string | null
@@ -3334,6 +3387,7 @@ export namespace Prisma {
 
   export type ProjectUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: EnumProjectTypeFieldUpdateOperationsInput | $Enums.ProjectType
     image?: NullableStringFieldUpdateOperationsInput | string | null
     iosLink?: NullableStringFieldUpdateOperationsInput | string | null
     androidLink?: NullableStringFieldUpdateOperationsInput | string | null
@@ -3346,6 +3400,7 @@ export namespace Prisma {
 
   export type ProjectCreateManyInput = {
     id?: string
+    type: $Enums.ProjectType
     image?: string | null
     iosLink?: string | null
     androidLink?: string | null
@@ -3358,6 +3413,7 @@ export namespace Prisma {
 
   export type ProjectUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: EnumProjectTypeFieldUpdateOperationsInput | $Enums.ProjectType
     image?: NullableStringFieldUpdateOperationsInput | string | null
     iosLink?: NullableStringFieldUpdateOperationsInput | string | null
     androidLink?: NullableStringFieldUpdateOperationsInput | string | null
@@ -3370,6 +3426,7 @@ export namespace Prisma {
 
   export type ProjectUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    type?: EnumProjectTypeFieldUpdateOperationsInput | $Enums.ProjectType
     image?: NullableStringFieldUpdateOperationsInput | string | null
     iosLink?: NullableStringFieldUpdateOperationsInput | string | null
     androidLink?: NullableStringFieldUpdateOperationsInput | string | null
@@ -3512,8 +3569,16 @@ export namespace Prisma {
     not?: NestedUuidFilter<$PrismaModel> | string
   }
 
+  export type EnumProjectTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProjectType | EnumProjectTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ProjectType[] | ListEnumProjectTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProjectType[] | ListEnumProjectTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumProjectTypeFilter<$PrismaModel> | $Enums.ProjectType
+  }
+
   export type ProjectCountOrderByAggregateInput = {
     id?: SortOrder
+    type?: SortOrder
     image?: SortOrder
     iosLink?: SortOrder
     androidLink?: SortOrder
@@ -3526,6 +3591,7 @@ export namespace Prisma {
 
   export type ProjectMaxOrderByAggregateInput = {
     id?: SortOrder
+    type?: SortOrder
     image?: SortOrder
     iosLink?: SortOrder
     androidLink?: SortOrder
@@ -3538,6 +3604,7 @@ export namespace Prisma {
 
   export type ProjectMinOrderByAggregateInput = {
     id?: SortOrder
+    type?: SortOrder
     image?: SortOrder
     iosLink?: SortOrder
     androidLink?: SortOrder
@@ -3563,6 +3630,16 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type EnumProjectTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProjectType | EnumProjectTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ProjectType[] | ListEnumProjectTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProjectType[] | ListEnumProjectTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumProjectTypeWithAggregatesFilter<$PrismaModel> | $Enums.ProjectType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumProjectTypeFilter<$PrismaModel>
+    _max?: NestedEnumProjectTypeFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -3573,6 +3650,10 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type EnumProjectTypeFieldUpdateOperationsInput = {
+    set?: $Enums.ProjectType
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -3695,6 +3776,13 @@ export namespace Prisma {
     not?: NestedUuidFilter<$PrismaModel> | string
   }
 
+  export type NestedEnumProjectTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProjectType | EnumProjectTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ProjectType[] | ListEnumProjectTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProjectType[] | ListEnumProjectTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumProjectTypeFilter<$PrismaModel> | $Enums.ProjectType
+  }
+
   export type NestedUuidWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -3707,6 +3795,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedEnumProjectTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProjectType | EnumProjectTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ProjectType[] | ListEnumProjectTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProjectType[] | ListEnumProjectTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumProjectTypeWithAggregatesFilter<$PrismaModel> | $Enums.ProjectType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumProjectTypeFilter<$PrismaModel>
+    _max?: NestedEnumProjectTypeFilter<$PrismaModel>
   }
 
 
