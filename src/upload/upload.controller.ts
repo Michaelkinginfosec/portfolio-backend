@@ -27,7 +27,7 @@ export class UploadController {
     }),
   )
   uploadImage(@UploadedFile() file: Express.Multer.File) {
-    const imageUrl = `http://localhost:3000/uploads/${file.filename}`;
+    const imageUrl = `https://conservative-mary-michaelking-f5ecbf8c.koyeb.app/uploads/${file.filename}`;
     // const imageUrl = `https://conservative-mary-michaelking-f5ecbf8c.koyeb.app/uploads/${file.filename}`;
     return { imageUrl };
   }
