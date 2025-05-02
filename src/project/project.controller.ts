@@ -29,13 +29,13 @@ export class ProjectController {
     return await this.projectService.addProject(type, data);
   }
   @UseGuards(JwtAuthGuard)
-  @Delete(":type/:id")
+  @Delete(":id")
   @ApiOperation({summary: "remove project"})
   @ApiResponse({ status: 200, description: 'project has been succesfully removed' })
   @ApiResponse({ status: 401, description: 'Unauthorized.' })
   @ApiResponse({ status: 500, description: 'Internal Server Error.' })
-  async deleteteProject (@Param('type') type: string,@Param('id') id:string){
-    return await this.projectService.deleteProjectById(type, id);
+  async deleteteProject (@Param('id') id:string){
+    return await this.projectService.deleteProjectById( id);
 
   }
   

@@ -81,36 +81,16 @@ export class ProjectService {
     
         throw new BadRequestException("Invalid project type");
     }
-    async deleteProjectById(type: string, id: string) {
-        if (type === ProjectType.WORK || type === 'work') {
-            // Delete project of type WORK
-            const project = await this.prisma.project.delete({
-                where: {
-                    id: id,
-                    type: ProjectType.WORK, // Ensure project is of type WORK
-                },
-            });
-            if (!project) {
-                throw new NotFoundException('Work project not found');
-            }
-            return project;
+    async deleteProjectById(id: string) {
+        const project = await this.prisma.project.delete({
+            where: {
+                id: id,
+            },
+        });
+        if (!project) {
+            throw new NotFoundException('Work project not found');
         }
-    
-        if (type === ProjectType.HOBBY || type === 'hobby') {
-            
-            const project = await this.prisma.project.delete({
-                where: {
-                    id: id,
-                    type: ProjectType.HOBBY, 
-                },
-            });
-            if (!project) {
-                throw new NotFoundException('Hobby project not found');
-            }
-            return project;
-        }
-    
-        throw new BadRequestException('Invalid project type');
+        return project;
     }
     
 }

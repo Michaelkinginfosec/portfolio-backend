@@ -6,6 +6,7 @@ import { ContactModule } from './contact/contact.module';
 import { ConfigModule } from '@nestjs/config/dist';
 import { PingModule } from './ping/ping.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import { UploadController } from './upload/upload.controller';
 
 
 
@@ -16,7 +17,7 @@ import { ScheduleModule } from '@nestjs/schedule';
   }),
     PingModule,ScheduleModule.forRoot()
    ],
-  
+   controllers: [UploadController],
   providers: [],
 })
 export class AppModule {}
