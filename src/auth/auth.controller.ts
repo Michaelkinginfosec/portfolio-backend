@@ -55,7 +55,6 @@ export class AuthController {
   async refreshTokens(@Body() dto: RefreshTokenDto) {
     return this.authService.refreshTokens(dto.refreshToken);
   }
-  @UseGuards(JwtAuthGuard)
   @Get('me')
   getProfile(@User() user: any) {
     return user;  
