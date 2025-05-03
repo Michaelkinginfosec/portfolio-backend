@@ -49,7 +49,6 @@ export class AuthController {
   
   @ApiBearerAuth('access-token')
   @Post('refresh')
-  @UseGuards(JwtAuthGuard) 
   @ApiOperation({summary: "Refresh token"})
   @ApiResponse({ status: 201, type: RefreshTokenDto })
   @ApiResponse({ status: 500, description: 'Internal Server Error.' })
