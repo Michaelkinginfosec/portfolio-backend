@@ -5,13 +5,16 @@ import {
   UseInterceptors,
   HttpException,
   HttpStatus,
+  UseGuards,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import cloudinary from 'src/common/config/cloudinary.config';
+import { JwtAuthGuard } from 'src/common/guards/jwt.guard';
 import * as streamifier from 'streamifier';
 
 @Controller('upload')
 export class UploadController {
+  @UseGuards(JwtAuthGuard)
   @Post('image')
   @UseInterceptors(FileInterceptor('file'))
   async uploadImage(@UploadedFile() file: Express.Multer.File) {
