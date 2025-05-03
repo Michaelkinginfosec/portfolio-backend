@@ -11,7 +11,14 @@ async function bootstrap() {
   app.use(cookieParser()); 
   app.useGlobalPipes(new ValidationPipe)
   app.enableCors({
-    origin: "https://conservative-mary-michaelking-f5ecbf8c.koyeb.app",
+    origin: (origin, callback) => {
+      const isLocalhost = /^http:\/\/(localhost|127\.0\.0\.1):\d+$/;
+      if (!origin || isLocalhost.test(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   });
   app.setGlobalPrefix('api/v1');
