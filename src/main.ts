@@ -10,10 +10,8 @@ async function bootstrap() {
   
   app.use(cookieParser()); 
   app.useGlobalPipes(new ValidationPipe)
-  app.enableCors({origin: "*", credentials: true,})
+  app.enableCors({origin: "https://conservative-mary-michaelking-f5ecbf8c.koyeb.app", credentials: true,})
   app.setGlobalPrefix('api/v1');
-  
-
 
 const config = new DocumentBuilder()
   .setTitle('MICHAELKING')

@@ -16,7 +16,7 @@ export class ProjectController {
   @ApiResponse({ status: 500, description: 'Internal Server Error.' })
   @UseGuards(JwtAuthGuard)
   @Post(':type')
-  async addWorkProject(
+  async addProject(
     @Param('type') type: string,
     @Body() createProjectDto: CreateProjectDto
   ) {
