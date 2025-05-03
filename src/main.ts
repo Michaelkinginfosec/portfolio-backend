@@ -11,10 +11,8 @@ async function bootstrap() {
   app.use(cookieParser()); 
   app.useGlobalPipes(new ValidationPipe)
   app.enableCors({
-    origin: "https://conservative-mary-michaelking-f5ecbf8c.koyeb.app", 
+    origin: "https://conservative-mary-michaelking-f5ecbf8c.koyeb.app",
     credentials: true,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", 
-    allowedHeaders: "Content-Type, Authorization, X-Requested-With",
   });
   app.setGlobalPrefix('api/v1');
 
