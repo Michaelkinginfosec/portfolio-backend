@@ -1,34 +1,40 @@
-// upload.controller.ts
 import {
   Controller,
   Post,
   UploadedFile,
   UseInterceptors,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { diskStorage } from 'multer';
-import { v4 as uuidv4 } from 'uuid';
-import { extname } from 'path';
-import { Express } from 'express';
-
+import cloudinary from 'src/common/config/cloudinary.config';
+import * as streamifier from 'streamifier';
 
 @Controller('upload')
 export class UploadController {
   @Post('image')
-  @UseInterceptors(
-    FileInterceptor('file', {
-      storage: diskStorage({
-        destination: './uploads', // folder to save
-        filename: (req, file, cb) => {
-          const uniqueSuffix = uuidv4() + extname(file.originalname);
-          cb(null, uniqueSuffix);
+  @UseInterceptors(FileInterceptor('file'))
+  async uploadImage(@UploadedFile() file: Express.Multer.File) {
+    if (!file) {
+      throw new HttpException('No file uploaded', HttpStatus.BAD_REQUEST);
+    }
+
+    const result = await new Promise<{ url: string }>((resolve, reject) => {
+      const uploadStream = cloudinary.uploader.upload_stream(
+        { folder: 'portfolio' },
+        (error, result) => {
+          if (error) return reject(error);
+          if (result && result.secure_url) {
+            resolve({ url: result.secure_url });
+          } else {
+            reject(new Error('Upload failed: result is undefined or missing secure_url'));
+          }
         },
-      }),
-    }),
-  )
-  uploadImage(@UploadedFile() file: Express.Multer.File) {
-    const imageUrl = `https://conservative-mary-michaelking-f5ecbf8c.koyeb.app/uploads/${file.filename}`;
-    // const imageUrl = `https://conservative-mary-michaelking-f5ecbf8c.koyeb.app/uploads/${file.filename}`;
-    return { imageUrl };
+      );
+
+      streamifier.createReadStream(file.buffer).pipe(uploadStream);
+    });
+
+    return { imageUrl: result.url };
   }
 }

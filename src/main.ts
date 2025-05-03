@@ -3,16 +3,11 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as cookieParser from 'cookie-parser';
-import { join } from 'path';
-import { NestExpressApplication } from '@nestjs/platform-express';
+
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  app.useStaticAssets(join(__dirname, '..', 'uploads'), {
-    prefix: '/uploads/',
-  });
-
-
+  const app = await NestFactory.create(AppModule);
+  
   app.use(cookieParser()); 
   app.useGlobalPipes(new ValidationPipe)
   app.enableCors({origin: "*", credentials: true,})

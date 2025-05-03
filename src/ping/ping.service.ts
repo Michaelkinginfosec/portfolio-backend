@@ -9,7 +9,7 @@ export class PingService {
   
   @Interval(3 * 60 * 1000) 
   async pingServer() {
-    const pingUrl = 'https://portfolio-backend-c669.onrender.com/api/v1/ping'; 
+    const pingUrl = 'https://conservative-mary-michaelking-f5ecbf8c.koyeb.app/api/v1/ping'; 
     try {
       const response = await lastValueFrom(this.httpService.get(pingUrl));
       console.log('Ping successful:', response.data);
