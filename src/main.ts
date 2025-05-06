@@ -12,8 +12,12 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe)
   app.enableCors({
     origin: (origin, callback) => {
-      const isLocalhost = /^http:\/\/(localhost|127\.0\.0\.1):\d+$/;
-      if (!origin || isLocalhost.test(origin)) {
+      const allowedOrigins = [
+        /^http:\/\/(localhost|127\.0\.0\.1):\d+$/, // for development
+        'https://osunde-goodluck-michael.netlify.app' // deployed URL
+      ];
+  
+      if (!origin || allowedOrigins.some(o => typeof o === 'string' ? o === origin : o.test(origin))) {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by CORS'));
