@@ -10,6 +10,27 @@ async function bootstrap() {
   
   app.use(cookieParser()); 
   app.useGlobalPipes(new ValidationPipe)
+  const allowedOrigins = [
+    /^http:\/\/(localhost|127\.0\.0\.1):\d+$/,
+    'https://osunde-goodluck-michael.netlify.app',
+  ];
+  
+  // Add this BEFORE app.enableCors
+  app.use((req, res, next) => {
+    const origin = req.headers.origin;
+    const isAllowed = !origin || allowedOrigins.some((o) =>
+      typeof o === 'string' ? o === origin : o.test(origin),
+    );
+  
+    if (!isAllowed) {
+      return res.status(403).json({
+        statusCode: 403,
+        message: 'CORS Error: This origin is not allowed to access this resource.',
+      });
+    }
+  
+    next();
+  });
   app.enableCors({
     origin: (origin, callback) => {
       const allowedOrigins = [
