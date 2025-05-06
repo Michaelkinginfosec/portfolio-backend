@@ -14,14 +14,14 @@ import { User } from 'src/common/decorators/user.decorator';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @ApiOperation({summary: "Signup"})
-  @ApiResponse({ status: 201, description: 'User has been successfully created.', type: SignupDto })
-  @ApiResponse({ status: 400, description: 'Bad Request.' })
-  @ApiResponse({ status: 500, description: 'Internal Server Error.' })
-  @Post('signup')
-  async signup(@Body() dto: SignupDto) {
-    return this.authService.signup(dto);
-  }
+  // @ApiOperation({summary: "Signup"})
+  // @ApiResponse({ status: 201, description: 'User has been successfully created.', type: SignupDto })
+  // @ApiResponse({ status: 400, description: 'Bad Request.' })
+  // @ApiResponse({ status: 500, description: 'Internal Server Error.' })
+  // @Post('signup')
+  // async signup(@Body() dto: SignupDto) {
+  //   return this.authService.signup(dto);
+  // }
 
   @ApiOperation({summary: "Login"})
   @ApiResponse({ status: 201, description: 'Login Success', type: LoginDto })
@@ -37,6 +37,7 @@ export class AuthController {
       sameSite: 'lax', 
       maxAge: 24 * 60 * 60 * 1000, 
     });
+  
 
     
     return {

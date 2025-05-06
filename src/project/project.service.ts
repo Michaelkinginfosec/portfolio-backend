@@ -27,7 +27,7 @@ export class ProjectService {
                     title,
                     subTitle,
                     type: ProjectType.WORK,
-                    ...rest, // No need to include 'type' here, it will be handled explicitly
+                    ...rest, 
                 },
             });
     
@@ -44,7 +44,7 @@ export class ProjectService {
                     title,
                     subTitle,
                     type: ProjectType.HOBBY,
-                    ...rest, // No need to include 'type' here either
+                    ...rest, 
                 },
             });
     
@@ -61,7 +61,7 @@ export class ProjectService {
     async getAllProject(type: string) {
         if (type === ProjectType.WORK || type === 'work') {
             const projects = await this.prisma.project.findMany({
-                where: { type: ProjectType.WORK }, // Filter by type 'WORK'
+                where: { type: ProjectType.WORK },
             });
             if (projects.length === 0) {
                 throw new NotFoundException("No work projects found");
@@ -71,7 +71,7 @@ export class ProjectService {
     
         if (type === ProjectType.HOBBY || type === 'hobby') {
             const projects = await this.prisma.project.findMany({
-                where: { type: ProjectType.HOBBY }, // Filter by type 'HOBBY'
+                where: { type: ProjectType.HOBBY }, 
             });
             if (projects.length === 0) {
                 throw new NotFoundException("No hobby projects found");

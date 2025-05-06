@@ -14,7 +14,6 @@ import * as streamifier from 'streamifier';
 
 @Controller('upload')
 export class UploadController {
-  @UseGuards(JwtAuthGuard)
   @Post('image')
   @UseInterceptors(FileInterceptor('file'))
   async uploadImage(@UploadedFile() file: Express.Multer.File) {

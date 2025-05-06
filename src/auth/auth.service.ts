@@ -13,21 +13,21 @@ export class AuthService {
     private jwtService: JwtService
   ) {}
 
-  async signup(dto: SignupDto) {
-    const existing = await this.prisma.user.findUnique({ where: { email: dto.email } });
-    if (existing) throw new BadRequestException('User already exists');
+  // async signup(dto: SignupDto) {
+  //   const existing = await this.prisma.user.findUnique({ where: { email: dto.email } });
+  //   if (existing) throw new BadRequestException('User already exists');
 
-    const hashedPassword = await bcrypt.hash(dto.password, 16);
+  //   const hashedPassword = await bcrypt.hash(dto.password, 16);
 
-    const user = await this.prisma.user.create({
-      data: {
-        email: dto.email,
-        password: hashedPassword,
-      },
-    });
-    const {password,  ...userWithoutPassword} = user
-    return { message: 'User created successfully', user: userWithoutPassword };
-  }
+  //   const user = await this.prisma.user.create({
+  //     data: {
+  //       email: dto.email,
+  //       password: hashedPassword,
+  //     },
+  //   });
+  //   const {password,  ...userWithoutPassword} = user
+  //   return { message: 'User created successfully', user: userWithoutPassword };
+  // }
 
   async login(dto: LoginDto) {
     const user = await this.prisma.user.findUnique({ where: { email: dto.email } });
